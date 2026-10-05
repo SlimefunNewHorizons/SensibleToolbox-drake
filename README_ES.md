@@ -1,13 +1,13 @@
 <div align="center">
 
-  <img src="https://raw.githubusercontent.com/DrakesCraft-Labs/SensibleToolbox-drake/main/banner.svg" alt="SensibleToolbox-drake Banner" width="920" />
+  <img src="https://raw.githubusercontent.com/SlimefunNewHorizons/SensibleToolbox-drake/main/banner.svg" alt="SensibleToolbox-drake Banner" width="920" />
 
 # 🧪 SensibleToolbox-Drake
 
 **Automatización modular, logística avanzada de ítems, energía SCU y maquinaria industrial para Slimefun4.**
 
 <p>
-  <a href="https://github.com/DrakesCraft-Labs/SensibleToolbox-drake"><img src="https://img.shields.io/badge/GitHub-SensibleToolbox--Drake-181717?style=for-the-badge&logo=github" alt="GitHub"/></a>
+  <a href="https://github.com/SlimefunNewHorizons/SensibleToolbox-drake"><img src="https://img.shields.io/badge/GitHub-SensibleToolbox--Drake-181717?style=for-the-badge&logo=github" alt="GitHub"/></a>
   <img src="https://img.shields.io/badge/Slimefun4-Drake_Edition-22C55E?style=for-the-badge&logo=curseforge&logoColor=white" alt="Slimefun4"/>
   <img src="https://img.shields.io/badge/Paper-1.21.11%20%7C%2026.1%20%7C%2026.2-38BDF8?style=for-the-badge&logo=minecraft&logoColor=white" alt="Paper 1.21.11 | 26.1 | 26.2"/>
   <img src="https://img.shields.io/badge/Java-21%20%7C%2025-F89820?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java 21 | 25"/>
@@ -93,7 +93,7 @@ Todo el contenido se investiga y fabrica directamente desde la **Guía de Slimef
 |---|---|
 | **Servidor** | Paper / Purpur **1.21.11**, **26.1.x** y **26.2.x** (un solo jar para las tres) |
 | **Java** | **Java 21+** en 1.21.11 · **Java 25** en 26.1 / 26.2 |
-| **Core Requerido** | [Slimefun4-Drake](https://github.com/DrakesCraft-Labs/Slimefun4-Drake) |
+| **Core Requerido** | [Slimefun4-Drake](https://github.com/SlimefunNewHorizons/Slimefun4-Drake) |
 | **Arquitectura** | 100% Server-side (no requiere mods ni clientes modificados en los jugadores) |
 
 ---
@@ -128,7 +128,7 @@ GitHub Actions (`Drake CI`) ejecuta las tres variantes en cada push y pull reque
 
 <div align="center">
 
-**Desarrollado y Mantenido por [DrakesCraft Labs](https://github.com/DrakesCraft-Labs)**  
+**Desarrollado y Mantenido por [DrakesCraft Labs](https://github.com/SlimefunNewHorizons)**  
 *Basado en el diseño original de desht.*  
 Licencia **GPL-3.0-only**.
 
@@ -139,7 +139,7 @@ Licencia **GPL-3.0-only**.
 - **Original Project / Upstream**: Slimefun4 Community Addon.
 - **Port & Maintenance**: DrakesCraft Labs team (Compatibility for Paper / Purpur 1.21.11).
 - **License**: GPL-3.0 / MIT.
-- **Source Code**: [GitHub Repository](https://github.com/DrakesCraft-Labs/SensibleToolbox-drake)
-- **Support & Issues**: [GitHub Issues](https://github.com/DrakesCraft-Labs/SensibleToolbox-drake/issues) | [Discord](https://discord.gg/rv3vtXZTk7)
+- **Source Code**: [GitHub Repository](https://github.com/SlimefunNewHorizons/SensibleToolbox-drake)
+- **Support & Issues**: [GitHub Issues](https://github.com/SlimefunNewHorizons/SensibleToolbox-drake/issues) | [Discord](https://discord.gg/rv3vtXZTk7)
 
 *This project is an open-source derivative work maintained by DrakesCraft Labs under the terms of its original license. All original assets and concepts belong to their respective creators.*

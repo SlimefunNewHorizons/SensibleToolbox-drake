@@ -1,13 +1,13 @@
 <div align="center">
 
-  <img src="https://raw.githubusercontent.com/DrakesCraft-Labs/SensibleToolbox-drake/main/banner.svg" alt="SensibleToolbox-drake Banner" width="920" />
+  <img src="https://raw.githubusercontent.com/SlimefunNewHorizons/SensibleToolbox-drake/main/banner.svg" alt="SensibleToolbox-drake Banner" width="920" />
 
 # 🧪 SensibleToolbox-Drake
 
 **Modular automation, advanced item logistics, SCU energy systems, and industrial machinery for Slimefun4.**
 
 <p>
-  <a href="https://github.com/DrakesCraft-Labs/SensibleToolbox-drake"><img src="https://img.shields.io/badge/GitHub-SensibleToolbox--Drake-181717?style=for-the-badge&logo=github" alt="GitHub"/></a>
+  <a href="https://github.com/SlimefunNewHorizons/SensibleToolbox-drake"><img src="https://img.shields.io/badge/GitHub-SensibleToolbox--Drake-181717?style=for-the-badge&logo=github" alt="GitHub"/></a>
   <img src="https://img.shields.io/badge/Slimefun4-Drake_Edition-22C55E?style=for-the-badge&logo=curseforge&logoColor=white" alt="Slimefun4"/>
   <img src="https://img.shields.io/badge/Paper-1.21.11%20%7C%2026.1%20%7C%2026.2-38BDF8?style=for-the-badge&logo=minecraft&logoColor=white" alt="Paper 1.21.11 | 26.1 | 26.2"/>
   <img src="https://img.shields.io/badge/Java-21%20%7C%2025-F89820?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java 21 | 25"/>
@@ -93,14 +93,14 @@ All items, machines, and tools are researched and crafted directly through the *
 |---|---|
 | **Server Software** | Paper / Purpur **1.21.11**, **26.1.x** and **26.2.x** (one jar for all three) |
 | **Java Runtime** | **Java 21+** on 1.21.11 · **Java 25** on 26.1 / 26.2 |
-| **Required Core** | [Slimefun4-Drake](https://github.com/DrakesCraft-Labs/Slimefun4-Drake) |
+| **Required Core** | [Slimefun4-Drake](https://github.com/SlimefunNewHorizons/Slimefun4-Drake) |
 | **Architecture** | 100% Server-Side (Vanilla Minecraft clients can join without installing client mods) |
 
 ---
 
 ## 📥 Installation
 
-1. Download the latest release of `SensibleToolbox-drake.jar` from the [Versions](https://github.com/DrakesCraft-Labs/SensibleToolbox-drake/releases) page.
+1. Download the latest release of `SensibleToolbox-drake.jar` from the [Versions](https://github.com/SlimefunNewHorizons/SensibleToolbox-drake/releases) page.
 2. Place the `.jar` file into your server's `plugins/` directory alongside `Slimefun4-Drake.jar`.
 3. Start or restart your server. Categories and recipes will automatically appear in `/sf guide`.
 
@@ -109,7 +109,7 @@ All items, machines, and tools are researched and crafted directly through the *
 ## 🛠️ Building from Source
 
 ```bash
-git clone https://github.com/DrakesCraft-Labs/SensibleToolbox-drake.git
+git clone https://github.com/SlimefunNewHorizons/SensibleToolbox-drake.git
 cd SensibleToolbox-drake
 mvn clean verify
 ```
@@ -138,7 +138,7 @@ The compiled artifact will be located under `target/SensibleToolbox-drake.jar`.
 
 <div align="center">
 
-**Developed and Maintained by [DrakesCraft Labs](https://github.com/DrakesCraft-Labs)**  
+**Developed and Maintained by [DrakesCraft Labs](https://github.com/SlimefunNewHorizons)**  
 *Based on the original design by desht.*  
 Licensed under **GPL-3.0-only**.
 
@@ -148,7 +148,7 @@ Licensed under **GPL-3.0-only**.
 
 ## 📄 License & Upstream Attribution
 
-This project is a sovereign fork maintained by [**JackStar6677-1**](https://github.com/JackStar6677-1) under [**DrakesCraft Labs**](https://github.com/DrakesCraft-Labs).
+This project is a sovereign fork maintained by [**JackStar6677-1**](https://github.com/JackStar6677-1) under [**DrakesCraft Labs**](https://github.com/SlimefunNewHorizons).
 
 - **Original Project:** Created by the upstream authors and the open-source community.
 - **DrakesCraft Optimizations:** Modernized for Paper/Purpur 1.21.11+, Java 21, high concurrency, asynchronous safety, and exploit/duplication prevention.
