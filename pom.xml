@@ -13,6 +13,7 @@
     <description>SensibleToolbox port integrado en stack Drake. Soporta Paper/Purpur 1.21.11, 26.1.x y 26.2.x con un solo jar.</description>
 
     <properties>
+        <lombok.version>1.18.48</lombok.version>
 
         <java.version>21</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -138,7 +139,7 @@
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
-                <version>1.18.48</version>
+                <version>${lombok.version}</version>
                 <scope>provided</scope>
             </dependency>
             <dependency>
