@@ -91,11 +91,6 @@
             <scope>provided</scope>
         </dependency>
 
-            <dependency>
-                <groupId>com.github.drakescraft_labs</groupId>
-                <artifactId>drakes-labs-autoupdate</artifactId>
-                <version>11-SNAPSHOT</version>
-            </dependency>
 
 
             <!-- ProtocolLib -->
@@ -325,10 +320,6 @@
             <groupId>org.bstats</groupId>
             <artifactId>bstats-base</artifactId>
             <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.github.drakescraft_labs</groupId>
-            <artifactId>drakes-labs-autoupdate</artifactId>
         </dependency>
         <!--
           El repositorio nacio con un test que usa JUnit y MockBukkit pero sin declararlos, asi
