@@ -270,14 +270,14 @@ public class AutoBuilder extends BaseSTBMachine {
                         return;
                     }
 
-                    // just skip over any "unbreakable" blocks (bedrock, ender portal etc.)
-                    if (b.getType().getHardness() < 3600000) {
+                    // just skip over any "unbreakable" blocks (bedrock, ender portal etc.), whose hardness is -1
+                    if (b.getType().getHardness() >= 0) {
                         scuNeeded = baseScuPerOp * b.getType().getHardness();
 
                         if (scuNeeded > getCharge()) {
                             advanceBuildPos = false;
                         } else if (b.getType() != Material.AIR) {
-                            b.getWorld().playEffect(b.getLocation(), Effect.STEP_SOUND, b.getType());
+                            b.getWorld().playEffect(b.getLocation(), Effect.STEP_SOUND, b.getBlockData());
                             BaseSTBBlock stb = SensibleToolbox.getBlockAt(b.getLocation());
 
                             if (stb != null) {
@@ -308,7 +308,7 @@ public class AutoBuilder extends BaseSTBMachine {
                                 advanceBuildPos = false;
                             } else {
                                 b.setType(item.getType());
-                                b.getWorld().playEffect(b.getLocation(), Effect.STEP_SOUND, b.getType());
+                                b.getWorld().playEffect(b.getLocation(), Effect.STEP_SOUND, b.getBlockData());
                             }
                         }
                     }
