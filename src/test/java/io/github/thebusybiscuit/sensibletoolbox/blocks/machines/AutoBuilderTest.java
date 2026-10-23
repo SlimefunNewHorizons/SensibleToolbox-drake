@@ -17,6 +17,7 @@ import org.mockbukkit.mockbukkit.ServerMock;
 
 import com.github.drakescraft_labs.slimefun4.libraries.dough.protection.ProtectionManager;
 import io.github.thebusybiscuit.sensibletoolbox.SensibleToolboxPlugin;
+import io.github.thebusybiscuit.sensibletoolbox.api.SensibleToolbox;
 import io.github.thebusybiscuit.sensibletoolbox.api.items.BaseSTBBlock;
 import me.desht.dhutils.blocks.PersistableLocation;
 import me.desht.dhutils.cuboid.Cuboid;
@@ -29,8 +30,10 @@ class AutoBuilderTest {
     @BeforeEach
     void setUp() {
         server = MockBukkit.mock();
-        SensibleToolboxPlugin plugin = MockBukkit.load(SensibleToolboxPlugin.class);
-        // the real one is created in a delayed task that also builds every recipe
+        MockBukkit.load(SensibleToolboxPlugin.class);
+        // the real one is created in a delayed task that also builds every recipe;
+        // the API caches the first plugin ever loaded, so patch that one, not the fresh load
+        SensibleToolboxPlugin plugin = SensibleToolbox.getPluginInstance();
         setField(SensibleToolboxPlugin.class, plugin, "protectionManager", new ProtectionManager(plugin));
         world = server.addSimpleWorld("test_world");
     }
