@@ -39,7 +39,7 @@ public class InfernalFarm extends AutoFarm {
 
     @Override
     public String[] getLore() {
-        return new String[] { "Automatically harvests and replants", "Nether Warts", "in an 11x11 Area (5 Block Radius) 2 Blocks above the Machine" };
+        return new String[] { "Automatically harvests and replants", "Nether Warts", "in an 11x11 Area (5 Block Radius) up to 2 Blocks above the Machine" };
     }
 
     @Override

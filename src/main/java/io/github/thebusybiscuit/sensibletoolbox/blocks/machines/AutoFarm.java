@@ -58,7 +58,7 @@ public class AutoFarm extends AutoFarmingMachine {
 
     @Override
     public String[] getLore() {
-        return new String[] { "Automatically harvests and replants", "Wheat/Potato/Carrot Crops", "in a " + RADIUS + "x" + RADIUS + " Radius 2 Blocks above the Machine" };
+        return new String[] { "Automatically harvests and replants", "Wheat/Potato/Carrot/Beetroot Crops", "in a " + RADIUS + "x" + RADIUS + " Area up to 2 Blocks above the Machine" };
     }
 
     @Override
@@ -138,13 +138,13 @@ public class AutoFarm extends AutoFarmingMachine {
             populateBlocks(getLocation());
         }
 
-        if (!isJammed()) {
-            harvestCrops();
-        } else if (buffer != null) {
+        // buffered crop goes out first, even if auto-eject already cleared the jam
+        if (buffer != null) {
             if (output(buffer)) {
-                buffer = null;
                 setJammed(false);
             }
+        } else if (!isJammed()) {
+            harvestCrops();
         }
 
         super.onServerTick();

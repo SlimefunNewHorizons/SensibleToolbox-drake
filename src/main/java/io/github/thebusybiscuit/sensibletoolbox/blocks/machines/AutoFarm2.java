@@ -47,7 +47,7 @@ public class AutoFarm2 extends AutoFarm {
 
     @Override
     public String[] getLore() {
-        return new String[] { "Automatically harvests and replants", "Cocoa Beans/Sugar Cane/Cactus", "in a " + RADIUS + "x" + RADIUS + " Radius 2 Blocks above the Machine" };
+        return new String[] { "Automatically harvests and replants", "Cocoa Beans/Sweet Berries/Sugar Cane/Cactus", "in a " + RADIUS + "x" + RADIUS + " Area up to 3 Blocks above the Machine" };
     }
 
     @Override

@@ -100,8 +100,7 @@ public abstract class AutoFarmingMachine extends BaseSTBMachine {
 
                 if (stack != null) {
                     if (autoEject(stack)) {
-                        int amount = stack.getAmount() > 3 ? stack.getAmount() - 4 : 0;
-                        stack.setAmount(amount);
+                        stack.setAmount(stack.getAmount() - 1);
                         setInventoryItem(slot, stack);
                         setJammed(false);
                     }

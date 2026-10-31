@@ -1,6 +1,7 @@
 package io.github.thebusybiscuit.sensibletoolbox.blocks.machines;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.lang.reflect.Field;
@@ -10,6 +11,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
+import org.bukkit.block.BlockFace;
 import org.bukkit.block.data.Ageable;
 import org.bukkit.inventory.ItemStack;
 import org.junit.jupiter.api.AfterEach;
@@ -88,6 +90,48 @@ class AutoFarmTest {
             }
         }
         assertTrue(foundWheat, "AutoFarm output inventory should contain harvested wheat");
+    }
+
+    @Test
+    void testAutoEjectRemovesOnlyEjectedItem() throws Exception {
+        Location machineLoc = new Location(world, 40, 64, 40);
+        AutoFarm farm = new AutoFarm();
+        setLocationReflectively(farm, machineLoc);
+        Field eject = BaseSTBMachine.class.getDeclaredField("autoEjectDirection");
+        eject.setAccessible(true);
+        eject.set(farm, BlockFace.NORTH);
+
+        Method set = BaseSTBMachine.class.getDeclaredMethod("setInventoryItem", int.class, ItemStack.class);
+        set.setAccessible(true);
+        set.invoke(farm, 10, new ItemStack(Material.WHEAT, 10));
+
+        farm.onServerTick();
+
+        assertEquals(9, getInventoryItemReflectively(farm, 10).getAmount(), "Auto-eject should remove exactly the one ejected item");
+    }
+
+    @Test
+    void testBufferedCropIsOutputAfterJamClears() {
+        Location machineLoc = new Location(world, 50, 64, 50);
+        AutoFarm farm = new AutoFarm();
+        setLocationReflectively(farm, machineLoc);
+        farm.setCharge(100.0);
+
+        Block cropBlock = world.getBlockAt(50, 65, 50);
+        cropBlock.setType(Material.WHEAT);
+        Ageable ageable = (Ageable) cropBlock.getBlockData();
+        ageable.setAge(ageable.getMaximumAge());
+        cropBlock.setBlockData(ageable);
+
+        farm.onBlockRegistered(machineLoc, true);
+        // jam was cleared (e.g. by auto-eject) while a crop was still buffered
+        farm.buffer = Material.POTATO;
+        farm.setJammed(false);
+        farm.onServerTick();
+
+        assertNull(farm.buffer, "Buffered crop should be output");
+        assertEquals(Material.POTATO, getInventoryItemReflectively(farm, 10).getType(), "Buffered crop should land in the output");
+        assertEquals(ageable.getMaximumAge(), ((Ageable) cropBlock.getBlockData()).getAge(), "No new harvest while the buffer is pending");
     }
 
     @Test
