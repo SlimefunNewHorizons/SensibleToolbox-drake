@@ -51,6 +51,7 @@ dependencies {
     testImplementation("org.mockito:mockito-core:5.24.0")
     testImplementation("org.slf4j:slf4j-simple:2.0.20")
     testImplementation("org.ow2.asm:asm:9.10.1")
+    testImplementation("org.xerial:sqlite-jdbc:3.46.1.3")
     testImplementation("org.mockbukkit.mockbukkit:mockbukkit-v1.21:4.116.3") {
         exclude(group = "org.jetbrains", module = "annotations")
     }
@@ -82,5 +83,7 @@ tasks {
     }
     test {
         useJUnitPlatform()
+        // *IT need the shaded jar from `mvn verify` (failsafe), like Maven's surefire skips them
+        exclude("**/*IT.class", "**/*IT$*.class")
     }
 }
