@@ -12,3 +12,4 @@ bin/
 .project
 target/
 dependency-reduced-pom.xml
+graphify-out/
