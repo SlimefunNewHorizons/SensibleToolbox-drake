@@ -6,7 +6,7 @@
 
     <groupId>com.github.drakescraft_labs</groupId>
     <artifactId>SensibleToolbox-drake</artifactId>
-    <version>1.22-Drake-SNAPSHOT</version>
+    <version>1.23-Drake-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>SensibleToolbox-drake</name>
