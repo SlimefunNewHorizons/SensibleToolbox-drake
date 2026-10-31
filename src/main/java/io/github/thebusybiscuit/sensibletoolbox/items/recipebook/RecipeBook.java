@@ -176,10 +176,14 @@ public class RecipeBook extends BaseSTBItem {
         Set<ItemStack> itemSet = new HashSet<>();
 
         while (iter.hasNext()) {
-            Recipe recipe = iter.next();
-            ItemStack stack = recipe.getResult().clone();
-            stack.setAmount(1);
-            itemSet.add(stack);
+            try {
+                Recipe recipe = iter.next();
+                ItemStack stack = recipe.getResult().clone();
+                stack.setAmount(1);
+                itemSet.add(stack);
+            } catch (Throwable t) {
+                // Ignore recipes with invalid/empty results or unconvertible recipes in Paper 26.2
+            }
         }
 
         CustomRecipeManager crm = CustomRecipeManager.getManager();

@@ -90,12 +90,16 @@ public final class RecipeUtil {
         Iterator<Recipe> iter = Bukkit.recipeIterator();
 
         while (iter.hasNext()) {
-            Recipe r = iter.next();
+            try {
+                Recipe r = iter.next();
 
-            if (r instanceof FurnaceRecipe) {
-                Material mat = ((FurnaceRecipe) r).getInput().getType();
-                vanillaSmelts.add(mat);
-                recordReverseSmelt(r.getResult(), ((FurnaceRecipe) r).getInput());
+                if (r instanceof FurnaceRecipe) {
+                    Material mat = ((FurnaceRecipe) r).getInput().getType();
+                    vanillaSmelts.add(mat);
+                    recordReverseSmelt(r.getResult(), ((FurnaceRecipe) r).getInput());
+                }
+            } catch (Throwable t) {
+                // Ignore recipes with invalid/empty results or unconvertible recipes in Paper 26.2
             }
         }
     }

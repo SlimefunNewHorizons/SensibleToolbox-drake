@@ -44,14 +44,18 @@ public class Smelter extends AbstractIOMachine {
         Iterator<Recipe> iter = Bukkit.recipeIterator();
 
         while (iter.hasNext()) {
-            Recipe r = iter.next();
+            try {
+                Recipe r = iter.next();
 
-            if (r instanceof FurnaceRecipe) {
-                FurnaceRecipe fr = (FurnaceRecipe) r;
+                if (r instanceof FurnaceRecipe) {
+                    FurnaceRecipe fr = (FurnaceRecipe) r;
 
-                if (RecipeUtil.isVanillaSmelt(fr.getInput().getType())) {
-                    crm.addCustomRecipe(new SimpleCustomRecipe(this, fr.getInput(), fr.getResult(), getProcessingTime(fr.getInput())));
+                    if (RecipeUtil.isVanillaSmelt(fr.getInput().getType())) {
+                        crm.addCustomRecipe(new SimpleCustomRecipe(this, fr.getInput(), fr.getResult(), getProcessingTime(fr.getInput())));
+                    }
                 }
+            } catch (Throwable t) {
+                // Ignore unconvertible recipes
             }
         }
 

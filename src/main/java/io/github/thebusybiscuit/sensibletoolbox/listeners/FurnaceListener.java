@@ -131,10 +131,14 @@ public class FurnaceListener extends STBBaseListener {
             Iterator<Recipe> recipes = Bukkit.recipeIterator();
 
             while (recipes.hasNext()) {
-                Recipe recipe = recipes.next();
+                try {
+                    Recipe recipe = recipes.next();
 
-                if (recipe instanceof FurnaceRecipe && vanillaRecipeCheck((FurnaceRecipe) recipe, stack)) {
-                    return true;
+                    if (recipe instanceof FurnaceRecipe && vanillaRecipeCheck((FurnaceRecipe) recipe, stack)) {
+                        return true;
+                    }
+                } catch (Throwable t) {
+                    // Ignore unconvertible recipes
                 }
             }
 

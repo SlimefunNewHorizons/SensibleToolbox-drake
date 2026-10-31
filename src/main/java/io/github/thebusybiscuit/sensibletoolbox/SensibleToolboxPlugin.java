@@ -249,11 +249,26 @@ public class SensibleToolboxPlugin extends JavaPlugin implements ConfigurationLi
         // do all the recipe setup on a delayed task to ensure we pick up
         // custom recipes from any plugins that may have loaded after us
         getServer().getScheduler().runTask(this, () -> {
-            RecipeUtil.findVanillaFurnaceMaterials();
-            RecipeUtil.setupRecipes();
-            RecipeBook.buildRecipes();
-
-            protectionManager = new ProtectionManager(this);
+            try {
+                RecipeUtil.findVanillaFurnaceMaterials();
+            } catch (Throwable t) {
+                getLogger().log(Level.WARNING, "Error finding vanilla furnace materials: " + t.getMessage(), t);
+            }
+            try {
+                RecipeUtil.setupRecipes();
+            } catch (Throwable t) {
+                getLogger().log(Level.WARNING, "Error setting up SensibleToolbox recipes: " + t.getMessage(), t);
+            }
+            try {
+                RecipeBook.buildRecipes();
+            } catch (Throwable t) {
+                getLogger().log(Level.WARNING, "Error building recipe book: " + t.getMessage(), t);
+            }
+            try {
+                protectionManager = new ProtectionManager(this);
+            } catch (Throwable t) {
+                getLogger().log(Level.WARNING, "Error initializing protection manager: " + t.getMessage(), t);
+            }
         });
 
         getServer().getScheduler().runTaskTimer(this, LocationManager.getManager()::tick, 1L, 1L);
