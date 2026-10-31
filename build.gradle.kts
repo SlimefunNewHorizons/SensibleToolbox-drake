@@ -43,12 +43,14 @@ dependencies {
     }
 
     implementation("org.bstats:bstats-bukkit:3.2.1")
+    implementation("commons-lang:commons-lang:2.6")
 
     testImplementation(platform("org.junit:junit-bom:6.1.3"))
     testImplementation("org.junit.jupiter:junit-jupiter")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     testImplementation("org.mockito:mockito-core:5.24.0")
     testImplementation("org.slf4j:slf4j-simple:2.0.20")
+    testImplementation("org.ow2.asm:asm:9.10.1")
     testImplementation("org.mockbukkit.mockbukkit:mockbukkit-v1.21:4.116.3") {
         exclude(group = "org.jetbrains", module = "annotations")
     }
