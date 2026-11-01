@@ -94,8 +94,11 @@ class AutoFarmTest {
 
     @Test
     void testAutoEjectRemovesOnlyEjectedItem() throws Exception {
-        Location machineLoc = new Location(world, 40, 64, 40);
-        AutoFarm farm = new AutoFarm();
+        assertAutoEjectRemovesOnlyOne(new AutoFarm(), new Location(world, 40, 64, 40));
+        assertAutoEjectRemovesOnlyOne(new AutoFarm2(), new Location(world, 45, 64, 45));
+    }
+
+    private static void assertAutoEjectRemovesOnlyOne(AutoFarm farm, Location machineLoc) throws Exception {
         setLocationReflectively(farm, machineLoc);
         Field eject = BaseSTBMachine.class.getDeclaredField("autoEjectDirection");
         eject.setAccessible(true);
@@ -107,7 +110,28 @@ class AutoFarmTest {
 
         farm.onServerTick();
 
-        assertEquals(9, getInventoryItemReflectively(farm, 10).getAmount(), "Auto-eject should remove exactly the one ejected item");
+        assertEquals(9, getInventoryItemReflectively(farm, 10).getAmount(), farm.getItemName() + ": auto-eject should remove exactly the one ejected item");
+    }
+
+    @Test
+    void testAutoFarm2BufferedCropIsOutputAfterJamClears() {
+        Location machineLoc = new Location(world, 60, 64, 60);
+        AutoFarm2 farm2 = new AutoFarm2();
+        setLocationReflectively(farm2, machineLoc);
+        farm2.setCharge(100.0);
+
+        world.getBlockAt(60, 65, 60).setType(Material.SUGAR_CANE);
+        Block topCane = world.getBlockAt(60, 66, 60);
+        topCane.setType(Material.SUGAR_CANE);
+
+        farm2.onBlockRegistered(machineLoc, true);
+        farm2.buffer = Material.CACTUS;
+        farm2.setJammed(false);
+        farm2.onServerTick();
+
+        assertNull(farm2.buffer, "Buffered crop should be output");
+        assertEquals(Material.CACTUS, getInventoryItemReflectively(farm2, 10).getType(), "Buffered crop should land in the output");
+        assertEquals(Material.SUGAR_CANE, topCane.getType(), "No new harvest while the buffer is pending");
     }
 
     @Test
