@@ -428,7 +428,7 @@ topics:
       - "&6Mantenimiento"
       - "&7Usa &f/stb validate&7 tras un crash y &f/stb save&7 antes"
       - "&7de detener el servidor a mano."
-      - "&7Reporta errores en github.com/DrakesCraft-Labs."
+      - "&7Reporta errores en github.com/SlimefunNewHorizons."
 
   compat:
     title: "Compatibilidad"
