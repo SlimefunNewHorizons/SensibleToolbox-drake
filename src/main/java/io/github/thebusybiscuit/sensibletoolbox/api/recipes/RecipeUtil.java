@@ -14,6 +14,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Keyed;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.FurnaceRecipe;
@@ -51,6 +52,35 @@ public final class RecipeUtil {
             } catch (Exception x) {
                 SensibleToolboxPlugin.getInstance().getLogger().log(Level.SEVERE, x, () -> "Could not register recipe for item: " + itemId);
             }
+        }
+    }
+
+    /** Restore only missing Bukkit recipes after a datapack reload, without rebuilding machine caches. */
+    public static void restoreBukkitRecipes() {
+        for (String itemId : SensibleToolbox.getItemRegistry().getItemIds()) {
+            try {
+                BaseSTBItem item = SensibleToolbox.getItemRegistry().getItemById(itemId);
+                addIfMissing(item.getMainRecipe());
+                for (Recipe extra : item.getExtraRecipes()) {
+                    addIfMissing(extra);
+                }
+                ItemStack result = item.getSmeltingResult();
+                if (result != null) {
+                    NamespacedKey key = new NamespacedKey(SensibleToolboxPlugin.getInstance(), item.getItemTypeID() + "_furnacerecipe");
+                    if (Bukkit.getRecipe(key) == null) {
+                        addIfMissing(new FurnaceRecipe(key, result, new RecipeChoice.ExactChoice(item.toItemStack()), 0, 200));
+                    }
+                }
+            } catch (Exception x) {
+                SensibleToolboxPlugin.getInstance().getLogger().log(Level.SEVERE, x, () -> "Could not restore recipe for item: " + itemId);
+            }
+        }
+    }
+
+    /** Never replace a recipe already registered by this or another plugin. */
+    private static void addIfMissing(@Nullable Recipe recipe) {
+        if (recipe instanceof Keyed keyed && Bukkit.getRecipe(keyed.getKey()) == null) {
+            Bukkit.addRecipe(recipe);
         }
     }
 

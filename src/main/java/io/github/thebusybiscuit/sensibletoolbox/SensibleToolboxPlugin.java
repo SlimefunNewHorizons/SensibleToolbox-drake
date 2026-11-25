@@ -29,6 +29,7 @@ import io.github.thebusybiscuit.sensibletoolbox.api.MinecraftVersion;
 import io.github.thebusybiscuit.sensibletoolbox.api.RedstoneBehaviour;
 import io.github.thebusybiscuit.sensibletoolbox.api.gui.InventoryGUI;
 import io.github.thebusybiscuit.sensibletoolbox.api.recipes.RecipeUtil;
+import io.github.thebusybiscuit.sensibletoolbox.api.recipes.RecipeReloadListener;
 import io.github.thebusybiscuit.sensibletoolbox.blocks.AngelicBlock;
 import io.github.thebusybiscuit.sensibletoolbox.blocks.BlockUpdateDetector;
 import io.github.thebusybiscuit.sensibletoolbox.blocks.Elevator;
@@ -465,6 +466,11 @@ public class SensibleToolboxPlugin extends JavaPlugin implements ConfigurationLi
 
     private void registerEventListeners() {
         PluginManager pm = this.getServer().getPluginManager();
+        try {
+            pm.registerEvents(new RecipeReloadListener(this), this);
+        } catch (Exception | LinkageError e) {
+            getLogger().log(Level.WARNING, "Could not register recipe reload listener: " + e.getMessage(), e);
+        }
         try {
             pm.registerEvents(new GeneralListener(this), this);
             pm.registerEvents(new FurnaceListener(this), this);
