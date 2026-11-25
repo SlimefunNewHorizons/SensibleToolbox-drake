@@ -132,6 +132,11 @@ mvn clean verify -P mc-26.2
 
 GitHub Actions (`Drake CI`) runs all three on every push and pull request.
 
+An opt-in [real Paper recipe reload test](src/it/recipe-reload/README.md) checks
+listener registration, loss of recipes without recovery, and Breaker/Sender
+crafting after resource reloads in a disposable server. It requires Java 25 and
+does not replace player or full plugin-set testing.
+
 The compiled artifact will be located under `target/SensibleToolbox-drake.jar`.
 
 ---
